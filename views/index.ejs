@@ -82,7 +82,7 @@
 
     <ul class="messages">
       <% if (messages.length) { %>
-        <% messages.forEach(msg => { %>
+        <% messages.forEach((msg, i) => { %>
           <li class="message">
             <div class="meta">
               <span class="user"><%= msg.user %></span> · 
@@ -92,6 +92,9 @@
               }) %></span>
             </div>
             <div class="text"><%= msg.text %></div>
+            <div class="actions">
+                <a href="/messages/<%= i %>">Open</a>
+              </div>
           </li>
         <% }); %>
       <% } else { %>
