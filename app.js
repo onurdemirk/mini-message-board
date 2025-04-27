@@ -14,7 +14,10 @@ const mainRouter = require('./routes/index')
 app.use("/", mainRouter)
 app.use("/new-message", mainRouter)
 
-
+app.use((req, res) => {
+    res.status(404).render('404');
+  });
+  
 app.listen(PORT, () => {
     console.log(`Server is working: http://localhost:${PORT}`)
 })
