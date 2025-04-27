@@ -22,6 +22,17 @@ router.get("/new-message", (req, res) => {
     res.render("new-message")
 })
 
+router.get("/messages/:index", (req, res) => {
+    const index = Number(req.params.index)
+    const message = messages[index]
+
+    if(!message) {
+        return res.status(404).render("404")
+    }
+
+    res.render('details', { message })
+})
+
 router.post("/new-message", (req, res) => {
     const userName = req.body.userName
     const messageText = req.body.messageText
