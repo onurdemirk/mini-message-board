@@ -24,6 +24,21 @@
       padding: 20px;
       text-align: center;
     }
+    .nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .nav a:hover {
+      background: #218838;
+    }
     .messages {
       list-style: none;
       margin: 0;
@@ -52,22 +67,6 @@
       line-height: 1.4;
       color: #222;
     }
-    .new-button {
-      display: block;
-      text-align: center;
-      margin: 20px;
-    }
-    .new-button a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #28a745;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .new-button a:hover {
-      background: #218838;
-    }
   </style>
 </head>
 <body>
@@ -76,9 +75,14 @@
       <h1>Message Board</h1>
     </header>
 
+    <!-- New Message button moved to top -->
+    <div class="nav">
+      <a href="/new">New Message</a>
+    </div>
+
     <ul class="messages">
       <% if (messages.length) { %>
-        <% messages.forEach((msg, i) => { %>
+        <% messages.forEach(msg => { %>
           <li class="message">
             <div class="meta">
               <span class="user"><%= msg.user %></span> · 
@@ -89,17 +93,11 @@
             </div>
             <div class="text"><%= msg.text %></div>
           </li>
-        <% }) %>
+        <% }); %>
       <% } else { %>
-        <li class="message">
-          <div class="text">No messages yet.</div>
-        </li>
+        <li class="message"><div class="text">No messages yet.</div></li>
       <% } %>
     </ul>
-
-    <div class="new-button">
-      <a href="/new-message">New Message</a>
-    </div>
   </div>
 </body>
 </html>
