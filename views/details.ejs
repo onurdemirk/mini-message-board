@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Details</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+    h1 { color: #007bff; }
+    .back { display: inline-block; margin-top: 20px; text-decoration: none; color: #6c757d; }
+    .back:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Message Details</h1>
+    <p><strong>Author:</strong> <%= message.user %></p>
+    <p><strong>Text:</strong> <%= message.text %></p>
+    <p><strong>Date:</strong> <%= message.added.toLocaleString("en-US") %></p>
+    <a href="/" class="back">← Back to Board</a>
+  </div>
+</body>
+</html>
