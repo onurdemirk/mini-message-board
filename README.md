@@ -6,7 +6,9 @@ A simple Express.js & EJS app for posting and viewing messages.
 ## Technologies
 - **Node.js** v18+  
 - **Express.js** v5.x  
-- **EJS** v3.x template engine  
+- **EJS** v3.x template engine
+- **pg(node-postgres)** for database queries
+- **dotenv** for environment variable management
 - **serve-favicon** middleware  
 - **Railway** for deployment 
 
