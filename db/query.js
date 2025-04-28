@@ -9,7 +9,7 @@ async function getAllMessages() {
     const { rows } = await pool.query(
       `SELECT id, username, message, created_at
        FROM messages
-       ORDER BY created_at ASC`
+       ORDER BY created_at DESC`
     );
     return rows; 
   }
