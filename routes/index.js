@@ -1,21 +1,16 @@
-const messages = [
-    {
-      text: "Hi there!",
-      user: "Amando",
-      added: new Date()
-    },
-    {
-      text: "Hello World!",
-      user: "Charles",
-      added: new Date()
-    }
-  ];
-  
 const express = require("express")
 const router = express.Router()
+const db = require("../db/query")
 
-router.get("/", (req, res) => {
-    res.render("index", { messages } )
+
+router.get("/", async (req, res) => {
+  try {
+    const messages = await db.getAllMessages();
+    res.render("index", { messages })
+  } catch (err) {
+    console.log("Error in DB:", err)
+    res.status(500).send("server error - please try again later")
+  }
 })
 
 router.get("/new-message", (req, res) => {
@@ -33,17 +28,17 @@ router.get("/messages/:index", (req, res) => {
     res.render('details', { message })
 })
 
-router.post("/new-message", (req, res) => {
+router.post("/new-message", async (req, res) => {
     const userName = req.body.userName
     const messageText = req.body.messageText
 
-    messages.unshift({
-        user:  userName,
-        text:  messageText,
-        added: new Date()
-      });
-
+    try {
+      await db.insertMessage(userName, messageText)
       res.redirect("/")
+    } catch {
+      console.error("Message cannot be added:", err);
+      res.status(500).send("Message cannot be added (Error)");
+    }     
 })
 
 module.exports = router
