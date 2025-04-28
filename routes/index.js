@@ -35,7 +35,7 @@ router.post("/new-message", async (req, res) => {
     try {
       await db.insertMessage(userName, messageText)
       res.redirect("/")
-    } catch {
+    } catch(err) {
       console.error("Message cannot be added:", err);
       res.status(500).send("Message cannot be added (Error)");
     }     
