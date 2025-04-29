@@ -17,9 +17,12 @@ router.get("/new-message", (req, res) => {
     res.render("new-message")
 })
 
-router.get("/messages/:index", (req, res) => {
+router.get("/messages/:index", async (req, res) => {
     const index = Number(req.params.index)
-    const message = messages[index]
+    const messageArr = await db.getAllMessages();
+    const message = messageArr.filter(msg => msg.id === index)[0]
+
+    console.log(message)
 
     if(!message) {
         return res.status(404).render("404")

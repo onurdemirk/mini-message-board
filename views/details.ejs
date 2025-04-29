@@ -14,9 +14,9 @@
 <body>
   <div class="container">
     <h1>Message Details</h1>
-    <p><strong>Author:</strong> <%= message.user %></p>
-    <p><strong>Text:</strong> <%= message.text %></p>
-    <p><strong>Date:</strong> <%= message.added.toLocaleString("en-US") %></p>
+    <p><strong>Author:</strong> <%= message.username %></p>
+    <p><strong>Text:</strong> <%= message.message %></p>
+    <p><strong>Date:</strong> <%= message.created_at.toLocaleString("en-US") %></p>
     <a href="/" class="back">← Back to Board</a>
   </div>
 </body>
